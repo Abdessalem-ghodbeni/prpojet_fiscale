@@ -8,6 +8,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -64,4 +66,17 @@ public class Societe extends User {
     @ManyToOne
     @JoinColumn(name = "comptable_id")
     Comptable comptable;
+
+
+    @OneToMany(mappedBy = "societe", cascade = CascadeType.ALL)
+    Set<DeclarationFiscale> declarations = new HashSet<>();
+
+    @OneToMany(mappedBy = "societe", cascade = CascadeType.ALL)
+    Set<RegistreAchat> achats = new HashSet<>();
+
+    @OneToMany(mappedBy = "societe", cascade = CascadeType.ALL)
+    Set<RegistreVente> ventes = new HashSet<>();
+
+    @OneToMany(mappedBy = "societe", cascade = CascadeType.ALL)
+    Set<Historique> historiques = new HashSet<>();
 }
