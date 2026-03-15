@@ -1,8 +1,6 @@
 package com.backendfiscale.backendfiscale.Entites;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -61,4 +59,9 @@ public class Societe extends User {
 
     @Size(max = 50)
     String numeroCarteArtisan;
+
+
+    @ManyToOne
+    @JoinColumn(name = "comptable_id")
+    Comptable comptable;
 }

@@ -28,11 +28,6 @@ public class Comptable extends User {
     String telephoneProfessionnel;
 
     // Un comptable peut gérer plusieurs sociétés et une société peut avoir plusieurs comptables
-    @ManyToMany
-    @JoinTable(
-            name = "comptable_societe",
-            joinColumns = @JoinColumn(name = "comptable_id"),
-            inverseJoinColumns = @JoinColumn(name = "societe_id")
-    )
-    Set<Societe> clients = new HashSet<>();
+    @OneToMany(mappedBy = "comptable")
+    Set<Societe> societes = new HashSet<>();
 }
